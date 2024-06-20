@@ -11,6 +11,10 @@ const StyledButton = styled.button<{ disabled: boolean }>`
   cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
 `;
 
+export function sum(a: number, b: number) {
+  return a + b;
+}
+
 const MyButton = ({ disabled = false, label = "button" }: MyButtonProps) => {
   return <StyledButton disabled={disabled}>{label}</StyledButton>;
 };
