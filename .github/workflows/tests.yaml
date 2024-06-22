@@ -1,0 +1,26 @@
+name: Run Tests
+on: push
+jobs:
+  test:
+    name: Run Test suite
+    runs-on: ubuntu-latest
+    env:
+      COMPOSE_FILE: ./Dockerfile.ci
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build docker images
+        run: docker build -t main -f $COMPOSE_FILE .
+
+      - name: Run tests
+        run: docker run main
+
+    container:
+      image: node:18
+      ports:
+        - 80
+      volumes:
+        - my_docker_volume:/volume_mount
+      options: --cpus 1
