@@ -5,7 +5,7 @@ jobs:
     name: Run Test suite
     runs-on: ubuntu-latest
     env:
-      COMPOSE_FILE: ./Dockerfile.ci
+      COMPOSE_FILE: Dockerfile.ci
 
     steps:
       - name: Checkout code
@@ -16,11 +16,3 @@ jobs:
 
       - name: Run tests
         run: docker run main
-
-    container:
-      image: node:18
-      ports:
-        - 80
-      volumes:
-        - my_docker_volume:/volume_mount
-      options: --cpus 1
