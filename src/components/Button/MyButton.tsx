@@ -16,7 +16,11 @@ export function sum(a: number, b: number) {
 }
 
 const MyButton = ({ disabled = false, label = "button" }: MyButtonProps) => {
-  return <StyledButton disabled={disabled}>{label}</StyledButton>;
+  return (
+    <StyledButton data-testid="MyButton" disabled={disabled}>
+      {label}
+    </StyledButton>
+  );
 };
 
 export default MyButton;
