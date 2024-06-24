@@ -33,7 +33,7 @@ function App() {
   return (
     <>
       <h1>Welcome to my app</h1>
-      <MyButton label="huh"></MyButton>
+      <MyButton label="test"></MyButton>
     </>
   );
 }
