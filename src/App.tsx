@@ -1,39 +1,33 @@
-import Alert from "./components/Alert";
-import Button from "./components/Button";
-import Buttontry from "./components/Buttontry";
-//import ListGroup from "./components/ListGroup";
-import MyButton from "./components/Button/MyButton";
+import { useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
 
 function App() {
-  // let items = ["New Work", "San Francisco", "Tokyo", "London", "Manila"];
-
-  // const handleSelectItem = (item: string) => {
-  //   console.log(item);
-  // };
-
-  // return (
-  //   <div>
-  //     <ListGroup
-  //       items={items}
-  //       heading="Cities"
-  //       onSelectItem={handleSelectItem}
-  //     />
-  //   </div>
-  // );
-  // return (
-  //   <div>
-  //     <Alert>
-  //       Hello <span>World</span>
-  //     </Alert>
-  //     <Button onClick={() => console.log("Clicked")}> My Button </Button>
-  //     <Buttontry></Buttontry>
-  //   </div>
-  // );
+  const [count, setCount] = useState(0);
 
   return (
     <>
-      <h1>Welcome to my app</h1>
-      <MyButton label="test"></MyButton>
+      <div>
+        <a href="https://vitejs.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.tsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
     </>
   );
 }
