@@ -1,0 +1,64 @@
+name: Run tests then Deploy
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+
+jobs:
+
+  test:
+    name: Run test suite
+    runs-on: ubuntu-latest
+    env:
+      COMPOSE_FILE: ./Dockerfile.ci
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Build docker images
+      run: docker build -t main -f $COMPOSE_FILE .
+
+    - name: Run tests
+      run: docker run main
+
+
+  deploy:
+    name: Deploy to GH Pages
+    runs-on: ubuntu-latest
+    needs: [test]
+    concurrency:
+      group: "pages"
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      BUILD_PATH_PREFIX: ${{ github.event.repository.name }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Setup Node
+        uses: actions/setup-node@v4.0.2
+        with:
+          node-version: 20
+          cache: 'npm'
+      - run: npm ci
+      - run: echo $BUILD_PATH_PREFIX
+      - name: Build the project
+        run: npm run cd
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'dist'
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

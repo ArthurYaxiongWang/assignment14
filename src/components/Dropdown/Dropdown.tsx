@@ -1,36 +1,31 @@
-import React, { useState } from "react";
+import styled from "styled-components";
+import { DropdownProps } from "./Dropdown.types";
+import { getBackgroundColor } from "./Dropdown.lib";
 
-const Dropdown = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedOption, setSelectedOption] = useState(null);
+const StyledDropdown = styled.select<{ disabled: boolean; backgroundColorDisabled?: string }>`
+  background-color: ${(props) => getBackgroundColor(props.disabled, props.backgroundColorDisabled)};
+  color: ${(props) => (props.disabled ? "#999" : "black")};
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid ${(props) => (props.disabled ? "#ccc" : "#000")};
+  cursor: ${(props) => (props.disabled ? "not-allowed" : "pointer")};
 
-  const options = ["Option 1", "Option 2", "Option 3"];
+  @media (max-width: 768px) {
+    font-size: 14px;
+    padding: 8px;
+  }
+`;
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const handleOptionClick = (option: any) => {
-    setSelectedOption(option);
-    setIsOpen(false);
-  };
-
+function Dropdown({ disabled = false, options = [], backgroundColorDisabled }: DropdownProps) {
   return (
-    <div className="dropdown">
-      <button onClick={toggleDropdown} data-testid="myDropdown">
-        {selectedOption ? selectedOption : "Select an option"}
-      </button>
-      {isOpen && (
-        <ul>
-          {options.map((option, index) => (
-            <li key={index} onClick={() => handleOptionClick(option)}>
-              {option}
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
+    <StyledDropdown data-testid="dropdown" disabled={disabled} backgroundColorDisabled={backgroundColorDisabled}>
+      {options.map((option, index) => (
+        <option key={index} value={option}>
+          {option}
+        </option>
+      ))}
+    </StyledDropdown>
   );
-};
+}
 
 export default Dropdown;
