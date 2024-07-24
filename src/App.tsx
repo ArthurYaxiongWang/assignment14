@@ -29,7 +29,9 @@ const App: React.FC = () => {
   return (
     <div>
       <Navbar setCurrentPage={setCurrentPage} />
-      {renderPage()}
+      <div className="container">
+        {renderPage()}
+      </div>
     </div>
   );
 };
