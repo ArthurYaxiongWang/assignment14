@@ -1,31 +1,52 @@
-body, html, #root {
+/* Reset CSS */
+* {
   margin: 0;
   padding: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #f8f9fa;
+  box-sizing: border-box;
 }
 
-nav {
-  background-color: #007bff;
+body, html, #root {
+  width: 100%;
+  height: 100%;
+}
+
+/* Global Typography */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* CSS Variables */
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --background-color: #f8f9fa;
+  --text-color: #333;
+}
+
+/* Global Styles */
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--primary-color);
   padding: 10px;
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  justify-content: center;
 }
 
-nav ul {
+.navbar ul {
   list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
   gap: 20px;
 }
 
-nav ul li {
-  display: inline;
-}
-
-nav ul li button {
+.navbar ul li button {
   background: none;
   border: none;
   color: white;
@@ -33,61 +54,117 @@ nav ul li button {
   font-size: 16px;
 }
 
-nav ul li button:hover {
+.navbar ul li button:hover {
   text-decoration: underline;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 20px auto;
+/* Hero */
+.hero {
+  background-color: var(--background-color);
   padding: 20px;
-  background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
 }
 
-.section {
-  margin-bottom: 40px;
+.hero .photo {
+  width: 150px;
+  height: 150px;
+  background-color: #ccc;
+  border-radius: 50%;
+  margin-bottom: 20px;
 }
 
-.section h2 {
-  border-bottom: 2px solid #007bff;
-  padding-bottom: 10px;
-  color: #007bff;
+.hero .bio {
+  max-width: 600px;
 }
 
-.section p {
+.hero .bio h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.hero .bio p {
   font-size: 16px;
   line-height: 1.5;
 }
 
-.contact-form {
+/* Projects */
+.projects {
+  background-color: var(--background-color);
+  padding: 20px;
+}
+
+.project {
+  margin-bottom: 40px;
+}
+
+.project .thumbnail {
+  width: 100%;
+  height: 200px;
+  background-color: #ccc;
+  margin-bottom: 10px;
+}
+
+.project .description {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Contact */
+.contact {
+  background-color: var(--background-color);
+  padding: 20px;
+  text-align: center;
+}
+
+.contact form {
+  max-width: 600px;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.contact-form label {
-  font-size: 14px;
-}
-
-.contact-form input,
-.contact-form textarea {
+.contact form input,
+.contact form textarea {
   padding: 10px;
   font-size: 14px;
   border: 1px solid #ced4da;
   border-radius: 4px;
 }
 
-.contact-form button {
+.contact form button {
   padding: 10px;
   font-size: 16px;
-  background-color: #007bff;
+  background-color: var(--primary-color);
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
-.contact-form button:hover {
+.contact form button:hover {
   background-color: #0056b3;
+}
+
+/* Additional Global Styles */
+.section {
+  margin: 40px 0;
+}
+
+.section h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.section p {
+  font-size: 18px;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--secondary-color);
 }

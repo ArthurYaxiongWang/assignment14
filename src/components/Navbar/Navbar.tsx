@@ -6,7 +6,7 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ setCurrentPage }) => {
   return (
-    <nav>
+    <nav className="navbar">
       <ul>
         <li><button onClick={() => setCurrentPage('Home')}>Home</button></li>
         <li><button onClick={() => setCurrentPage('About')}>About</button></li>
