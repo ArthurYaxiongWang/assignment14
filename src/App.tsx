@@ -20,7 +20,6 @@ const App: React.FC = () => {
           <>
             <Hero title="Welcome to My Portfolio" photoUrl="/src/assets/images/me.jpeg" />
             <Home />
-            <TechStack />
             <SocialMedia />
           </>
         );
