@@ -26,7 +26,7 @@ jobs:
       run: npm install
 
     - name: Start Storybook
-      run: npm run storybook &
+      run: npm run start-storybook-no-open &
       env:
         CI: true
 
