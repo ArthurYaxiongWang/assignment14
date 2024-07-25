@@ -6,6 +6,8 @@ import About from './pages/About';
 import Experience from './pages/Experience';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
+import TechStack from './components/TechStack/TechStack';
+import SocialMedia from './components/SocialMedia/SocialMedia';
 
 const App: React.FC = () => {
   const [currentPage, setCurrentPage] = useState('Home');
@@ -19,9 +21,21 @@ const App: React.FC = () => {
       case 'Projects':
         return <Projects />;
       case 'Contact':
-        return <Contact />;
+        return (
+          <>
+            <TechStack /> {/* Add TechStack component above Contact */}
+            <Contact />
+            <SocialMedia /> {/* Add SocialMedia component */}
+          </>
+        );
       default:
-        return <Home />;
+        return (
+          <>
+            <Home />
+            <TechStack /> {/* Add TechStack component here */}
+            <SocialMedia /> {/* Add SocialMedia component */}
+          </>
+        );
     }
   };
 
