@@ -1,12 +1,18 @@
 import React from 'react';
 
-const Hero: React.FC<{ title: string }> = ({ title }) => {
+interface HeroProps {
+  title: string;
+  photoUrl: string;
+}
+
+const Hero: React.FC<HeroProps> = ({ title, photoUrl }) => {
   return (
     <section className="hero">
-      <div className="photo"></div>
+      <div className="photo">
+        <img src={photoUrl} alt="Profile" />
+      </div>
       <div className="bio">
         <h2>{title}</h2>
-        <p>Your bio and introduction go here.</p>
       </div>
     </section>
   );

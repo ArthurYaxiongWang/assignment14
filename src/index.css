@@ -19,7 +19,7 @@ body {
 
 /* CSS Variables */
 :root {
-  --primary-color: #007bff;
+  --primary-color: #3e4041;
   --secondary-color: #6c757d;
   --background-color: #f8f9fa;
   --text-color: #333;
@@ -72,9 +72,15 @@ body {
 .hero .photo {
   width: 150px;
   height: 150px;
-  background-color: #ccc;
   border-radius: 50%;
   margin-bottom: 20px;
+}
+
+.hero .photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 .hero .bio {
@@ -147,7 +153,7 @@ body {
 }
 
 .contact form button:hover {
-  background-color: #0056b3;
+  background-color: #1d1c1c;
 }
 
 /* Additional Global Styles */
@@ -159,7 +165,7 @@ body {
 }
 
 .navbar {
-  background-color: #007bff;
+  background-color: #333333;
   padding: 1rem;
   display: flex;
   justify-content: space-around;
@@ -202,3 +208,21 @@ body {
   margin: 0.5rem;
 }
 
+.socialmedia {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+  background-color: #333;
+  color: #fff;
+}
+
+.socialmedia a {
+  margin: 0 1rem;
+  font-size: 1.5rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+.socialmedia a:hover {
+  color: #00aced;
+}
