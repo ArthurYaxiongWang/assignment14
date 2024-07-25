@@ -10,12 +10,12 @@
     "storybook": "storybook dev -p 6006",
     "build:main": " set BUILD_TYPE=main && vite build",
     "build:storybook": "set BUILD_TYPE=storybook && storybook build",
-    "build": "concurrently -gs all -c 'bold.cyan,bold.magenta,bold.yellow,bold.green,bold.blue' npm:build:main npm:build:storybook",
+    "build": "concurrently -gs all -c 'bold.cyan,bold.magenta,bold.yellow,bold.green,bold.blue' npm:build:main npm:build:storybook ",
     "test:ts": "tsc",
     "test:jest": "jest",
     "test:storybook": "test-storybook",
     "test": "concurrently -gs all -c 'bold.cyan,bold.magenta,bold.yellow,bold.green,bold.blue' \"npm:test:*(!ts)\"",
-    "ci:test": "npm run storybook & sleep 30 && npm run test",
+    "ci:test": "npm run storybook & sleep 30 &&  npm run test",
     "cd": "set BUILD_COMBINED=true && concurrently -gs all -c 'bold.cyan,bold.magenta,bold.yellow,bold.green,bold.blue' npm:build:main \"npm:build:storybook -- -o dist/storybook\""
   },
   "jest": {
@@ -31,7 +31,6 @@
     ]
   },
   "dependencies": {
-    "@types/react-router-dom": "^5.3.3",
     "bootstrap": "5.2.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -43,17 +42,17 @@
     "@babel/preset-react": "7.24.7",
     "@babel/preset-typescript": "7.24.7",
     "@chromatic-com/storybook": "1.5.0",
-    "@storybook/addon-essentials": "8.2.5",
-    "@storybook/addon-interactions": "8.2.5",
-    "@storybook/addon-jest": "8.2.5",
-    "@storybook/addon-links": "8.2.5",
-    "@storybook/addon-onboarding": "8.2.5",
-    "@storybook/blocks": "8.2.5",
-    "@storybook/react": "8.2.5",
-    "@storybook/react-vite": "8.2.5",
-    "@storybook/test": "8.2.5",
-    "@storybook/test-runner": "0.19.0",
-    "@storybook/testing-library": "0.2.2",
+    "@storybook/addon-essentials": "^8.2.6",
+    "@storybook/addon-interactions": "^8.2.6",
+    "@storybook/addon-jest": "8.1.10",
+    "@storybook/addon-links": "8.1.4",
+    "@storybook/addon-onboarding": "8.1.4",
+    "@storybook/blocks": "^8.2.6",
+    "@storybook/react": "^8.2.6",
+    "@storybook/react-vite": "^8.2.6",
+    "@storybook/test": "^8.2.6",
+    "@storybook/test-runner": "0.18.2",
+    "@storybook/testing-library": "^0.2.2",
     "@testing-library/jest-dom": "6.4.6",
     "@testing-library/react": "16.0.0",
     "@types/jest": "29.5.12",
@@ -70,9 +69,9 @@
     "eslint-plugin-storybook": "0.8.0",
     "identity-obj-proxy": "3.0.0",
     "jest": "29.7.0",
-    "storybook": "8.2.5",
+    "storybook": "^8.2.6",
     "ts-node": "10.9.2",
     "typescript": "5.2.2",
-    "vite": "5.3.4"
+    "vite": "^5.3.5"
   }
 }

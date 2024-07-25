@@ -8,39 +8,25 @@ permissions:
   pages: write
   id-token: write
 
+
 jobs:
+
   test:
     name: Run test suite
     runs-on: ubuntu-latest
+    env:
+      COMPOSE_FILE: ./Dockerfile.ci
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '20'
-
-    - name: Install dependencies
-      run: npm install
-
-    - name: Start Storybook
-      run: npm run start-storybook-no-open &
-      env:
-        CI: true
-
-    - name: Wait for Storybook to start
-      run: npx wait-on http://localhost:6006
+    - name: Build docker images
+      run: docker build -t main -f $COMPOSE_FILE .
 
     - name: Run tests
-      run: npm run test:storybook
-
-    - name: Build docker images
-      run: docker build -t main -f Dockerfile.ci .
-
-    - name: Run tests in Docker
       run: docker run main
+
 
   deploy:
     name: Deploy to GH Pages
