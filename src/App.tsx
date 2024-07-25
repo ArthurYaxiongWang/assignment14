@@ -6,7 +6,6 @@ import About from './pages/About';
 import Experience from './pages/Experience';
 import Projects from './pages/Projects';
 import Contact from './pages/Contact';
-import TechStack from './components/TechStack';
 import SocialMedia from './components/SocialMedia';
 import Hero from './components/Hero';
 
@@ -30,13 +29,7 @@ const App: React.FC = () => {
       case 'Projects':
         return <Projects />;
       case 'Contact':
-        return (
-          <>
-            <TechStack />
-            <Contact />
-            <SocialMedia />
-          </>
-        );
+        return <Contact />;
       default:
         return null;
     }
