@@ -2,10 +2,12 @@ import { resolve } from 'path'
 import { defineConfig, rollupVersion } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vitejs.dev/config/
 export default defineConfig(({}) => {
   const config = { 
     plugins: [react()],
+    build: {
+      sourcemap: false,
+    },
     base: process.env.BUILD_PATH_PREFIX || undefined
   }
 
