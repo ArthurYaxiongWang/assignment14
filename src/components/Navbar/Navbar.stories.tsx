@@ -1,5 +1,6 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
+import { within, userEvent } from '@storybook/testing-library';
 import Navbar, { NavbarProps } from './Navbar';
 
 export default {
@@ -7,9 +8,15 @@ export default {
   component: Navbar,
 } as Meta;
 
-const Template: Story<NavbarProps> = (args) => <Navbar {...args} />;
+const Template: StoryFn<NavbarProps> = (args) => <Navbar {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  setCurrentPage: (page: string) => alert(`Navigating to ${page}`),
+  setCurrentPage: (page: string) => console.log(`Navigating to ${page}`),
+};
+
+Default.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const aboutButton = canvas.getByText('About');
+  await userEvent.click(aboutButton);
 };

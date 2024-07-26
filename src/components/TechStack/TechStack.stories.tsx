@@ -1,5 +1,6 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
+import { within, userEvent } from '@storybook/testing-library';
 import TechStack from './TechStack';
 
 export default {
@@ -7,7 +8,12 @@ export default {
   component: TechStack,
 } as Meta;
 
-const Template: Story = (args) => <TechStack {...args} />;
+const Template: StoryFn = (args) => <TechStack {...args} />;
 
-export const Default = Template.bind({});
-Default.args = {};
+export const TechStackDefault = Template.bind({});
+
+TechStackDefault.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const bootstrapItem = canvas.getByAltText('Bootstrap');
+  await userEvent.click(bootstrapItem);
+};

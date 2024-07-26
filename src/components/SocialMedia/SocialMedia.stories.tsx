@@ -1,5 +1,6 @@
 import React from 'react';
-import { Story, Meta } from '@storybook/react';
+import { StoryFn, Meta } from '@storybook/react';
+import { within, userEvent } from '@storybook/testing-library';
 import SocialMedia from './SocialMedia';
 
 export default {
@@ -7,7 +8,15 @@ export default {
   component: SocialMedia,
 } as Meta;
 
-const Template: Story = (args) => <SocialMedia {...args} />;
+const Template: StoryFn = (args) => <SocialMedia {...args} />;
 
 export const Default = Template.bind({});
-Default.args = {};
+
+Default.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const facebookButton = canvas.getByRole('link', { name: /facebook/i });
+
+  facebookButton.addEventListener('click', (e) => e.preventDefault());
+
+  await userEvent.click(facebookButton);
+};
