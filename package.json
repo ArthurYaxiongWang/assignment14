@@ -8,14 +8,14 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build:main": " set BUILD_TYPE=main && vite build",
+    "build:main": "set BUILD_TYPE=main && vite build",
     "build:storybook": "set BUILD_TYPE=storybook && storybook build",
     "build": "concurrently -gs all -c 'bold.cyan,bold.magenta,bold.yellow,bold.green,bold.blue' npm:build:main npm:build:storybook ",
     "test:ts": "tsc",
     "test:jest": "jest",
     "test:storybook": "test-storybook",
     "test": "concurrently -gs all -c 'bold.cyan,bold.magenta,bold.yellow,bold.green,bold.blue' \"npm:test:*(!ts)\"",
-    "ci:test": "npm run storybook & sleep 30 &&  npm run test",
+    "ci:test": "npm run storybook & sleep 30 && npm run test",
     "cd": "set BUILD_COMBINED=true && concurrently -gs all -c 'bold.cyan,bold.magenta,bold.yellow,bold.green,bold.blue' npm:build:main \"npm:build:storybook -- -o dist/storybook\""
   },
   "jest": {
